@@ -1,8 +1,7 @@
 ﻿const express = require("express");
 const axios = require("axios");
 
-const TEAMS_WEBHOOK_URL =
-  "https://sitecore1.webhook.office.com/webhookb2/5e8958b3-de1b-4239-a80c-80b33d2b840a@91700184-c314-4dc9-bb7e-a411df456a1e/IncomingWebhook/14c5be112bc7402d83d828efe799c0a0/db9aee50-0354-4b8e-9b36-37c0bbbddc14";
+const TEAMS_WEBHOOK_URL = "WEBHOOK_URL";
 
 const app = express();
 app.use(express.json());
