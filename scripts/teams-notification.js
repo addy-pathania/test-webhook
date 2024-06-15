@@ -4,17 +4,16 @@
  * @param payload
  */
 function transformPayload(payload) {
-  const title = `GitHub Alert: ${payload.alert?.tool?.name || ""}`;
-  const repository = payload.repository?.full_name || "";
-  const sender = payload.sender?.login || "";
-  const url = payload.alert?.html_url || "";
+  const title = `JSS Release ${payload.release.tag_name}`;
+  const releaseUrl = payload.release.html_url;
+  const publishedBy = payload.release.login;
 
   const teamsPayload = {
     "@type": "MessageCard",
     "@context": "http://schema.org/extensions",
     themeColor: "0076D7",
     title: title,
-    text: `**Repository:** ${repository}\n\n**Triggered by:** ${sender}\n\n**Alert URL:** ${url}`,
+    text: `**Release:** ${releaseUrl}\n\n**Published by:** ${publishedBy}}`,
   };
   return teamsPayload;
 }
@@ -28,15 +27,13 @@ function transformPayload(payload) {
 
   const event = github.event.release;
 
-  console.log(github.event);
-
   console.log(event);
 
   try {
     await fetch(process.env.TEAMS_WEBHOOK_URL, {
       method: "POST",
       body: JSON.stringify({
-        ...transformPayload(event.body),
+        ...transformPayload(event),
       }),
     });
   } catch (error) {
