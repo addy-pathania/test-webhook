@@ -4,9 +4,10 @@
  * @param payload
  */
 function transformPayload(payload) {
+  console.log("payload", payload);
   const title = `JSS Release ${payload.release.tag_name}`;
   const releaseUrl = payload.release.html_url;
-  const publishedBy = payload.sender.login;
+  const publishedBy = payload.release.login;
 
   const teamsPayload = {
     "@type": "MessageCard",
