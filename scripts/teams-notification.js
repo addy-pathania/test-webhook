@@ -5,9 +5,9 @@
  */
 function transformPayload(payload) {
   console.log("payload", payload);
-  const title = `JSS Release ${payload.release.tag_name}`;
-  const releaseUrl = payload.release.html_url;
-  const publishedBy = payload.release.login;
+  const title = `JSS Release ${payload.body.release.tag_name}`;
+  const releaseUrl = payload.body.release.html_url;
+  const publishedBy = payload.sender.login;
 
   const teamsPayload = {
     "@type": "MessageCard",
