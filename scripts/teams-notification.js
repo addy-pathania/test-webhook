@@ -15,7 +15,7 @@ function transformPayload(payload) {
     "@context": "http://schema.org/extensions",
     themeColor: "0076D7",
     title: title,
-    text: `**Release:** ${releaseUrl}\n\n**Published by:** ${publishedBy}}`,
+    text: `**Release:** ${releaseUrl}\n\n**Published by:** ${publishedBy}`,
   };
   return teamsPayload;
 }
