@@ -5,8 +5,8 @@
  */
 function transformPayload(payload) {
   console.log("payload", payload);
-  const title = `JSS Release ${payload.body.release.tag_name}`;
-  const releaseUrl = payload.body.release.html_url;
+  const title = `JSS Release ${payload.release.body.tag_name}`;
+  const releaseUrl = payload.release.body.html_url;
   const publishedBy = payload.sender.login;
 
   const teamsPayload = {
