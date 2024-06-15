@@ -4,7 +4,7 @@ on:
     types: [published]
 
 jobs:
-  notify_team:
+  notify_teams:
     runs-on: ubuntu-latest
 
     steps:
