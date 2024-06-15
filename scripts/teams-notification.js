@@ -6,7 +6,7 @@
 function transformPayload(payload) {
   const title = `JSS Release ${payload.release.tag_name}`;
   const releaseUrl = payload.release.html_url;
-  const publishedBy = payload.release.login;
+  const publishedBy = payload.sender.login;
 
   const teamsPayload = {
     "@type": "MessageCard",
@@ -25,15 +25,11 @@ function transformPayload(payload) {
     return;
   }
 
-  const event = github.event.release;
-
-  console.log(event);
-
   try {
     await fetch(process.env.TEAMS_WEBHOOK_URL, {
       method: "POST",
       body: JSON.stringify({
-        ...transformPayload(event),
+        ...transformPayload(github.event),
       }),
     });
   } catch (error) {
